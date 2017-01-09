@@ -12,4 +12,11 @@ describe('virtual processor', () => {
         expect(nextStepCpu.registerA).to.equal(1);
     })
 
+    it('Should load data into registers from memory', () => {
+    
+        var startingMemory = new compy.Memory([3, 1, 4, 1, 5, 8, 2, 6, 5, 3, 5]);
+        var startingCpu = new compy.Processor(0, 0, 0, 0, startingMemory.data.length, startingMemory);
+        var nextStepCpu = compy.loadRegisterFromMemory(startingCpu, "registerA", 0);
+        expect(nextStepCpu.registerA).to.equal(3);
+    })
 });
