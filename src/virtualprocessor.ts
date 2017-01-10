@@ -32,12 +32,14 @@ class Processor {
   stack_pointer: number;
   memory: Memory;
   constructor(program_counter: number, registerAdefault: number, registerBdefault: number, registerCdefault: number, stack_pointer: number, memory: Memory) {
-    this.program_counter = program_counter
-    this.registerA = registerAdefault
-    ///... //step 2
+    this.program_counter = program_counter;
+    this.registerA = registerAdefault;
+    this.registerB = registerBdefault;
+    this.registerC = registerCdefault;
+    this.stack_pointer = stack_pointer;
+    this.memory = memory;
   }
-
-  copy(): Processor { //step 1
+  copy(): Processor { //step 2
 
   }
 }
