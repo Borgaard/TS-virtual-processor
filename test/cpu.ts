@@ -38,6 +38,18 @@ describe('virtual processor', () => {
     var startingMemory = new compy.Memory([3, 1, 4, 1, 5, 8, 2, 6, 5, 3, 5]);
     var startingCpu = new compy.Processor(0, 0, 0, 0, startingMemory.data.length, startingMemory);
     var nextStepCpu = compy.loadRegisterFromMemory(startingCpu, "registerA", 0);
-    expect(nextStepCpu.registerA).to.equal(3);
+    expect(nextStepCpu.registerA).to.equal(3); //this and more!
   })
 });
+
+/*
+> startingCpu
+Processor {
+  program_counter: 0,
+  registerA: 0,
+  registerB: 0,
+  registerC: 0,
+  stack_pointer: 11,
+  memory: Memory { data: [ 3, 1, 4, 1, 5, 8, 2, 6, 5, 3, 5 ] } }
+
+*/

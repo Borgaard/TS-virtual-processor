@@ -40,7 +40,14 @@ class Processor {
     this.memory = memory;
   }
   copy(): Processor { //step 2
-
+    return new Processor(
+      this.program_counter,
+      this.registerA,
+      this.registerB,
+      this.registerC,
+      this.stack_pointer,
+      this.memory
+    );
   }
 }
 
@@ -50,8 +57,10 @@ function AdvanceProgramCounter(cpu: Processor): Processor {
 
 //copy the processor and set the named register to the value specified
 function loadRegister(cpu: Processor, registerName: string, value: number): Processor {
-
-} //step 3 & 4
+  var loadCpu: Processor = cpu.copy();
+  loadCpu[registerName] = value;
+  return loadCpu;
+}
 // copy the processor and lookup value in memory and set the value of named register
 function loadRegisterFromMemory(cpu: Processor, registerName: string, location: number) { //step #last
   //cpu.memory.get_location(location);
