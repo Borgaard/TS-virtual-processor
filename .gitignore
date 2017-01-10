@@ -1,0 +1,6 @@
+node_modules
+typings
+src/*.js
+test/*.js
+src/*.js.map
+test/*.js.map

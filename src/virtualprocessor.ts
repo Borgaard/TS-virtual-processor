@@ -1,12 +1,6 @@
 //gist https://gist.githubusercontent.com/hath995/67f7c19eebc0ae23c01ae24eb67e1728/raw/440ca2f3f2392f585926fb5ac80c2d276c0c5fdd/cpu.ts
 
 
-
-
-
-
-
-
 class Memory {
   data: number[];
   constructor(data: number[]) {
@@ -37,7 +31,7 @@ class Processor {
   registerC: number;
   stack_pointer: number;
   memory: Memory;
-  constructor(program_counter, registerAdefault, registerBdefault, registerCdefault, stack_pointer, memory) {
+  constructor(program_counter: number, registerAdefault: number, registerBdefault: number, registerCdefault: number, stack_pointer: number, memory: Memory) {
     this.program_counter = program_counter
     this.registerA = registerAdefault
     ///... //step 2
@@ -66,3 +60,5 @@ var modifiedLocationMemVal = startingMemory.set_location(0, 9);
 var startingCpu = new Processor(0, 0, 0, 0, startingMemory.data.length, startingMemory);
 var nextStepCpu = loadRegister(startingCpu, "registerA", 1);
 var memoryStepCPu = loadRegisterFromMemory(nextStepCpu, "RegisterB", 0);
+
+export {Processor, Memory, AdvanceProgramCounter, loadRegister, loadRegisterFromMemory}
