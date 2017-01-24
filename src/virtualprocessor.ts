@@ -39,7 +39,7 @@ class Processor {
     this.stack_pointer = stack_pointer;
     this.memory = memory;
   }
-  copy(): Processor { //step 2
+  copy(): Processor { //step 2 - done!
     return new Processor(
       this.program_counter,
       this.registerA,
@@ -51,8 +51,13 @@ class Processor {
   }
 }
 
-//copy the processor and increment the program_counter by adding 4
-function AdvanceProgramCounter(cpu: Processor): Processor {
+//copy the processor and increment the program_counter by adding 1
+function advanceProgramCounter(cpu: Processor): Processor {
+  // copy instance of the cpu above
+  var cpuCopy = cpu.copy();
+  // increment the program_counter of copy by 1
+  cpuCopy.program_counter++;
+  return cpuCopy;
 } //step 3 & 4
 
 //copy the processor and set the named register to the value specified
@@ -72,4 +77,4 @@ var startingCpu = new Processor(0, 0, 0, 0, startingMemory.data.length, starting
 var nextStepCpu = loadRegister(startingCpu, "registerA", 1);
 var memoryStepCPu = loadRegisterFromMemory(nextStepCpu, "RegisterB", 0);
 
-export {Processor, Memory, AdvanceProgramCounter, loadRegister, loadRegisterFromMemory}
+export {Processor, Memory, advanceProgramCounter, loadRegister, loadRegisterFromMemory}

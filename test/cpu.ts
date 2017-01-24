@@ -38,9 +38,21 @@ describe('virtual processor', () => {
     var startingMemory = new compy.Memory([3, 1, 4, 1, 5, 8, 2, 6, 5, 3, 5]);
     var startingCpu = new compy.Processor(0, 0, 0, 0, startingMemory.data.length, startingMemory);
     var nextStepCpu = compy.loadRegisterFromMemory(startingCpu, "registerA", 0);
-    expect(nextStepCpu.registerA).to.equal(3); //this and more!
+    expect(nextStepCpu.registerA).to.equal(3); //this and more! <-- next step, as of Monday, January 23rd
   })
+
+  // advanceProgramCounter();
+  it('Copy the processor and increment Processor.program_counter by adding 1', () => {
+    var startingMemory = new compy.Memory([3, 1, 4, 1, 5, 8, 2, 6, 5, 3, 5]);
+    var startingCpu = new compy.Processor(0, 0, 0, 0, startingMemory.data.length - 1, startingMemory);
+
+    var advanceCpu = compy.advanceProgramCounter(startingCpu);
+    // assertion that that program_counter is incremented by 1. do this by
+    //     comparing the original to the copy.
+    expect(advanceCpu.program_counter).to.equal(startingCpu.program_counter + 1);
 });
+
+
 
 /*
 > startingCpu
